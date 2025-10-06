@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranjan Kumar | Video Editor & UI/UX Designer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #4a44b5;
+            --dark-color: #2a2a3c;
+            --light-color: #f8f9fa;
+            --accent-color: #ff6584;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--dark-color) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #6c63ff 0%, #4a44b5 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center bottom;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-light {
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+        
+        .btn-download {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-download:hover {
+            background-color: #e05578;
+            border-color: #e05578;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .download-box {
+            background: white;
+            border-radius: 15px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .download-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Floating Download Button */
+        .floating-download {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .floating-btn {
+            background: var(--accent-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 101, 132, 0.6);
+        }
+        
+        .floating-label {
+            background: var(--dark-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .floating-download:hover .floating-label {
+            opacity: 1;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 5px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .floating-download {
+                right: 15px;
+                bottom: 20px;
+                top: auto;
+                transform: none;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Download Button -->
+    <div class="floating-download">
+        <a href="#" class="floating-btn" id="floatingDownload">
+            <i class="fas fa-download"></i>
+        </a>
+        <div class="floating-label">Download Resume</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Ranjan Kumar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="#download">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Ranjan Kumar</h1>
+                    <p class="hero-subtitle">Creative Video Editor & UI/UX Designer</p>
+                    <p>I create engaging visual content and seamless user experiences that captivate audiences and enhance brand engagement.</p>
+                    <div class="mt-4">
+                        <a href="#projects" class="btn btn-light me-3">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-light me-3">Contact Me</a>
+                        <a href="resume.pdf" class="btn btn-download" id="heroDownload" download="Ranjan_Kumar_Resume.pdf">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image mt-5 mt-lg-0">
+                        <i class="fas fa-video" style="font-size: 15rem; opacity: 0.7;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5" style="background-color: #f8f9fa;">
+        <div class="container py-5">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h4>Video Editing</h4>
+                        <p>Adobe Premiere Pro, DaVinci Resolve, CapCut, After Effects</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Motion Graphics</h4>
+                        <p>Animation, Sound Synchronization, Visual Effects</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>UI/UX Design</h4>
+                        <p>Figma, Wireframing, Mockups, User Journey Optimization</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Additional Tools</h4>
+                        <p>AI-based Editing Tools, Photoshop, Illustrator, Canva</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Web Development</h4>
+                        <p>HTML5, CSS3, JavaScript, React, Bootstrap, Tailwind CSS</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Soft Skills</h4>
+                        <p>Teamwork, Communication, Adaptability, Creative Problem-solving</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Projects & Work</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Video Editing Projects</h4>
+                            <p>Created short-form videos, ads, and reels for digital platforms with engaging motion graphics and animations.</p>
+                            <ul>
+                                <li>Developed brand-aligned motion graphics</li>
+                                <li>Transformed concepts into engaging visual content</li>
+                                <li>Collaborated with cross-functional teams</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>UI/UX Design - Food App Clone</h4>
+                            <p>Designed a modern, visually appealing streaming platform interface in Figma.</p>
+                            <ul>
+                                <li>Focused on intuitive navigation</li>
+                                <li>Optimized trending content presentation</li>
+                                <li>Created wireframes and mockups</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Gym Website</h4>
+                            <p>Developed a fully responsive website with workout plans and membership details.</p>
+                            <ul>
+                                <li>Implemented BMI calculator</li>
+                                <li>Created engaging user experience</li>
+                                <li>Used modern web technologies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Resume Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="download-box">
+                <div class="download-icon">
+                    <i class="fas fa-file-download"></i>
+                </div>
+                <h2 class="section-title">Download My Resume</h2>
+                <p class="mb-4">Get a detailed overview of my skills, experience, and projects in a printable format.</p>
+                <a href="MY RESUME.pdf" class="btn btn-download" id="downloadResume" download="MY RESUME.pdf">
+                    <i class="fas fa-download"></i> Download Resume (PDF)
+                </a>
+                <p class="mt-3 text-muted">File size: 1.2 MB | Last updated: November 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5" style="background-color: #f8f9fa;">
+        <div class="container py-5">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Location</h5>
+                                        <p>Rajkot, Gujarat (Pin Code- 360003)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Phone</h5>
+                                        <p>(+91) 8092693409</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Email</h5>
+                                        <p>rk9006162@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Online Profiles</h5>
+                                        <p>LinkedIn | GitHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="mailto:rk9006162@gmail.com" class="btn btn-primary me-3">Send Message</a>
+                            <a href="MY RESUME.pdf" class="btn btn-download" id="contactDownload" download="MY RESUME.pdf">
+                                <i class="fas fa-download me-2"></i>Download Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 Ranjan Kumar. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Download resume functionality with error handling
+        function downloadResume(e) {
+            e.preventDefault();
+            
+            // Create a temporary link to trigger download
+            const link = document.createElement('a');
+            link.href = 'MY RESUME.pdf'; // Update this path to your actual resume file
+            link.download = 'MY RESUME.pdf';
+            document.body.appendChild(link);
+            
+            // Check if the file exists
+            fetch(link.href)
+                .then(response => {
+                    if (response.ok) {
+                        // File exists, trigger download
+                        link.click();
+                        // Show success message
+                        showDownloadMessage('Resume downloaded successfully!', 'success');
+                    } else {
+                        // File doesn't exist
+                        showDownloadMessage('Resume file not found. Please check the file path.', 'error');
+                    }
+                })
+                .catch(error => {
+                    // Network error or other issue
+                    showDownloadMessage('Error downloading resume. Please try again later.', 'error');
+                    console.error('Download error:', error);
+                })
+                .finally(() => {
+                    // Clean up
+                    document.body.removeChild(link);
+                });
+        }
+        
+        // Show download status message
+        function showDownloadMessage(message, type) {
+            // Remove existing message if any
+            const existingMessage = document.querySelector('.download-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Create new message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `download-message alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+            messageDiv.style.cssText = `
+                top: 100px;
+                right: 20px;
+                z-index: 9999;
+                min-width: 300px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            messageDiv.textContent = message;
+            
+            // Add to page
+            document.body.appendChild(messageDiv);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
+        
+        // Add event listeners to all download buttons
+        document.getElementById('downloadResume').addEventListener('click', downloadResume);
+        document.getElementById('floatingDownload').addEventListener('click', downloadResume);
+        document.getElementById('heroDownload').addEventListener('click', downloadResume);
+        document.getElementById('contactDownload').addEventListener('click', downloadResume);
+    </script>
+</body>
+</html>
